@@ -80,4 +80,30 @@ function collectFormData() {
   };
 }
 
+// Image preview
+const debouncedImagePreview = debounce(() => {
+  const url = imageURLInput.value.trim();
+  imagePreview.innerHTML = "";
+
+  if (!url) return;
+
+  if (!validator.isValidURL(url)) {
+    validator.displayFieldError("imageURL", "Invalid URL format");
+    return;
+  }
+
+  validator.clearFieldError("imageURL");
+
+  const img = document.createElement("img");
+  img.src = url;
+  img.alt = "Recipe image preview";
+  img.onerror = () => {
+    imagePreview.innerHTML =
+      '<p style="color: var(--color-error);">Failed to load image</p>';
+  };
+  imagePreview.appendChild(img);
+}, 500);
+
+imageURLInput.addEventListener("input", debouncedImagePreview);
+
 // To be continued in next commits...
