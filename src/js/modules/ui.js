@@ -22,7 +22,6 @@ export class UIManager {
     this.recipeListEl = document.getElementById(recipeListId);
     if (!this.recipeListEl)
       throw new Error(`Element with id ${recipeListId} not found`);
-
     this.intersectionObserver = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
@@ -54,7 +53,6 @@ export class UIManager {
     const img = document.createElement("img");
     img.className = "recipe-card__image";
     img.alt = recipe.title;
-    // Lazy load image with data-src
     img.setAttribute(
       "data-src",
       recipe.imageURL || "/src/assets/images/placeholder.jpg"
@@ -88,11 +86,11 @@ export class UIManager {
 
     card.append(img, content);
 
-    // Add click handler to navigate to detail page
+    // Add click handler for navigation
     card.addEventListener("click", () => {
       window.location.href = `/pages/detail.html?id=${encodeURIComponent(recipe.id)}`;
     });
-
+    // Keyboard navigation
     card.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
@@ -104,21 +102,13 @@ export class UIManager {
   }
 
   renderRecipeList(recipes) {
-    this.recipeListEl.innerHTML = ""; // Clear existing
-
-    if (!recipes || recipes.length === 0) {
-      const message = document.createElement("p");
-      message.textContent = "No recipes found.";
-      this.recipeListEl.appendChild(message);
-      return;
-    }
-
+    // Batch DOM insertion to optimize reflow
+    this.recipeListEl.innerHTML = ""; // clear existing
     const fragment = document.createDocumentFragment();
     recipes.forEach((recipe) => {
       const card = this.createRecipeCard(recipe);
       fragment.appendChild(card);
     });
-
     this.recipeListEl.appendChild(fragment);
   }
 }
