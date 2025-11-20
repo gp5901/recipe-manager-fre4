@@ -18,6 +18,15 @@ export class CRUDManager {
   }
 
   /**
+   * Delete recipe by ID
+   * @param {string} id
+   * @returns {Promise<void>}
+   */
+  async deleteRecipe(id) {
+    this.storage.remove(id);
+  }
+
+  /**
    * Update existing recipe by ID
    * @param {string} id
    * @param {Object} formData
