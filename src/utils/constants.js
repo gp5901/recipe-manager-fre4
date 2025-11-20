@@ -12,18 +12,15 @@
  * @module constants
  */
 
-export const STORAGE_KEY = 'recipes';
+export const STORAGE_KEY = "recipes";
 
 export const DIFFICULTY_LEVELS = Object.freeze({
-  EASY: 'easy',
-  MEDIUM: 'medium',
-  HARD: 'hard',
-  ALL: 'all',
+  EASY: "easy",
+  MEDIUM: "medium",
+  HARD: "hard",
+  ALL: "all",
 });
 
-/**
- * Validation schema for recipe fields
- */
 export const VALIDATION_RULES = {
   title: { minLength: 3, maxLength: 100, required: true },
   description: { minLength: 10, maxLength: 500, required: true },
@@ -35,5 +32,7 @@ export const VALIDATION_RULES = {
   prepTimeMax: 999,
   cookTimeMin: 1,
   cookTimeMax: 999,
-  difficultyValues: Object.values(DIFFICULTY_LEVELS).filter(level => level !== DIFFICULTY_LEVELS.ALL),
+  difficultyValues: Object.values(DIFFICULTY_LEVELS).filter(
+    (level) => level !== DIFFICULTY_LEVELS.ALL
+  ),
 };

@@ -14,23 +14,25 @@
 "use strict";
 
 /**
- * Performance Monitor - localStorage operation timing and logging
+ * Performance Monitor for localStorage ops
  * @module performance
  */
 
 export class PerformanceMonitor {
   static mark(name) {
-    if (performance && typeof performance.mark === 'function') {
+    if (performance && typeof performance.mark === "function") {
       performance.mark(name);
     }
   }
 
   static measure(name, startMark, endMark) {
-    if (performance && typeof performance.measure === 'function') {
+    if (performance && typeof performance.measure === "function") {
       performance.measure(name, startMark, endMark);
       const entries = performance.getEntriesByName(name);
-      entries.forEach(entry => {
-        console.info(`[Performance] ${entry.name}: ${entry.duration.toFixed(2)}ms`);
+      entries.forEach((entry) => {
+        console.info(
+          `[Performance] ${entry.name}: ${entry.duration.toFixed(2)}ms`
+        );
       });
       performance.clearMarks(startMark);
       performance.clearMarks(endMark);
@@ -38,4 +40,3 @@ export class PerformanceMonitor {
     }
   }
 }
-
