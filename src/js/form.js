@@ -1,8 +1,8 @@
 import { StorageManager } from "./modules/storage.js";
-import { Recipe, createRecipe } from "./modules/recipe.js";
+import { createRecipe } from "./modules/recipe.js";
 import { ValidationManager } from "./modules/validation.js";
 import { debounce } from "./utils/helpers.js";
-import { CRUDManager } from "./crud.js"; // Import CRUD manager
+import { CRUDManager } from "./crud.js";
 
 const storage = new StorageManager();
 const validator = new ValidationManager("recipe-form");
@@ -124,7 +124,6 @@ function loadDraft() {
       document.getElementById("difficulty").value = data.difficulty || "";
       document.getElementById("imageURL").value = data.imageURL || "";
 
-      // Populate ingredients
       ingredientsList.innerHTML = "";
       if (data.ingredients && data.ingredients.length > 0) {
         data.ingredients.forEach((ing) =>
@@ -134,7 +133,6 @@ function loadDraft() {
         ingredientsList.appendChild(createIngredientField());
       }
 
-      // Populate steps
       stepsList.innerHTML = "";
       if (data.steps && data.steps.length > 0) {
         data.steps.forEach((step) =>
@@ -165,9 +163,18 @@ form.addEventListener("submit", async (event) => {
   }
 
   try {
-    await crud.createRecipe(formData);
+    // If editing, update; else create
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+
+    if (id) {
+      await crud.updateRecipe(id, formData);
+      alert("Recipe updated successfully!");
+    } else {
+      await crud.createRecipe(formData);
+      alert("Recipe created successfully!");
+    }
     localStorage.removeItem(DRAFT_KEY);
-    alert("Recipe created successfully!");
     window.location.href = "/";
   } catch (error) {
     alert("Error saving recipe: " + error.message);
@@ -181,4 +188,45 @@ cancelBtn.addEventListener("click", () => {
   }
 });
 
-loadDraft();
+function prepopulateForm(id) {
+  const existingRecipe = crud.getRecipeById(id);
+  if (!existingRecipe) {
+    alert("Recipe not found");
+    window.location.href = "/";
+    return;
+  }
+
+  document.getElementById("form-title").textContent = "Edit Recipe";
+
+  document.getElementById("title").value = existingRecipe.title;
+  document.getElementById("description").value = existingRecipe.description;
+  document.getElementById("prepTime").value = existingRecipe.prepTime;
+  document.getElementById("cookTime").value = existingRecipe.cookTime;
+  document.getElementById("difficulty").value = existingRecipe.difficulty;
+  document.getElementById("imageURL").value = existingRecipe.imageURL || "";
+
+  ingredientsList.innerHTML = "";
+  existingRecipe.ingredients.forEach((ing) =>
+    ingredientsList.appendChild(createIngredientField(ing))
+  );
+
+  stepsList.innerHTML = "";
+  existingRecipe.steps.forEach((step) =>
+    stepsList.appendChild(createStepField(step))
+  );
+
+  // Trigger image preview
+  debouncedImagePreview();
+}
+
+function initForm() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get("id");
+  if (id) {
+    prepopulateForm(id);
+  } else {
+    loadDraft();
+  }
+}
+
+initForm();

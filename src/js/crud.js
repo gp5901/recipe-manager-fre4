@@ -7,7 +7,7 @@ export class CRUDManager {
   }
 
   /**
-   * Create and save a new recipe, then redirect on success
+   * Create and save a new recipe
    * @param {Object} formData
    * @returns {Promise<void>}
    */
@@ -15,5 +15,27 @@ export class CRUDManager {
     const recipe = createRecipe(formData);
     if (!recipe) throw new Error("Invalid recipe data");
     this.storage.save(recipe);
+  }
+
+  /**
+   * Update existing recipe by ID
+   * @param {string} id
+   * @param {Object} formData
+   * @returns {Promise<void>}
+   */
+  async updateRecipe(id, formData) {
+    const recipe = createRecipe({ id, ...formData });
+    if (!recipe) throw new Error("Invalid recipe data");
+    this.storage.save(recipe);
+  }
+
+  /**
+   * Get recipe by ID
+   * @param {string} id
+   * @returns {Object|null}
+   */
+  getRecipeById(id) {
+    const recipes = this.storage.getAll();
+    return recipes.find((r) => r.id === id) || null;
   }
 }
