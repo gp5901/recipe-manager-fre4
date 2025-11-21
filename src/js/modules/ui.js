@@ -61,7 +61,6 @@ export class UIManager {
     content.className = "recipe-card__content";
 
     /*** START CATEGORY BADGE ADDITION ***/
-    // Create category badge element
     let categoryBadge = null;
     if (recipe.category) {
       const categoryLabel =
@@ -73,7 +72,6 @@ export class UIManager {
     }
     /*** END CATEGORY BADGE ADDITION ***/
 
-    // Title element (with badge)
     const title = document.createElement("h2");
     title.className = "recipe-card__title";
     title.textContent = recipe.title;
@@ -94,9 +92,10 @@ export class UIManager {
 
     const difficulty = document.createElement("span");
     difficulty.className = `recipe-card__difficulty recipe-card__difficulty--${recipe.difficulty}`;
-    difficulty.textContent = recipe.difficulty;
+    difficulty.textContent = recipe.difficulty.toUpperCase();
 
     meta.append(prepCook, difficulty);
+
     content.append(title, description, meta);
     card.append(img, content);
 
