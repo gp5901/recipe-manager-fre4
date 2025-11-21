@@ -68,9 +68,17 @@ class CustomUIManager extends UIManager {
       description.className = "recipe-card__description";
       description.textContent = recipe.description;
 
-      const meta = document.createElement("p");
+      const meta = document.createElement("div");
       meta.className = "recipe-card__meta";
-      meta.textContent = `Prep: ${recipe.prepTime} mins | Cook: ${recipe.cookTime} mins | Difficulty: ${recipe.difficulty}`;
+
+      const prepCook = document.createElement("span");
+      prepCook.textContent = `Prep: ${recipe.prepTime} mins | Cook: ${recipe.cookTime} mins`;
+
+      const difficulty = document.createElement("span");
+      difficulty.className = `recipe-card__difficulty recipe-card__difficulty--${recipe.difficulty}`;
+      difficulty.textContent = recipe.difficulty.toUpperCase();
+
+      meta.append(prepCook, difficulty);
 
       content.append(title, description, meta);
       card.append(imgWrap, content);

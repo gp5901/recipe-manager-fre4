@@ -88,7 +88,7 @@ export class UIManager {
     meta.className = "recipe-card__meta";
 
     const prepCook = document.createElement("span");
-    prepCook.textContent = `Prep: ${recipe.prepTime} min | Cook: ${recipe.cookTime} min | `;
+    prepCook.textContent = `Prep: ${recipe.prepTime} min | Cook: ${recipe.cookTime} min`;
 
     const difficulty = document.createElement("span");
     difficulty.className = `recipe-card__difficulty recipe-card__difficulty--${recipe.difficulty}`;
