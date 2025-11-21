@@ -46,13 +46,13 @@ export class UIManager {
     img.alt = recipe.title;
     img.setAttribute(
       "data-src",
-      recipe.imageURL || "/src/assets/images/placeholder.jpg"
+      recipe.imageURL || "/assets/images/placeholder.jpg"
     );
-    img.src = "/src/assets/images/placeholder.jpg";
+    img.src = "/assets/images/placeholder.jpg";
 
     // Lazy load fallback handling
     img.onerror = () => {
-      img.src = "/src/assets/images/placeholder.jpg"; // fallback image
+      img.src = "/assets/images/placeholder.jpg"; // fallback image
     };
 
     this.intersectionObserver.observe(img);
