@@ -16,12 +16,8 @@ import "../css/utils/reset.css";
 import "../css/utils/variables.css";
 
 // Load page-specific scripts BEFORE DOMContentLoaded
-if (document.getElementById("recipe-form")) {
-  import("./form.js");
-}
-if (document.querySelector(".recipe-detail")) {
-  import("./detail.js");
-}
+import "./form.js";
+import "./detail.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Only run home page logic if we're on the home page
