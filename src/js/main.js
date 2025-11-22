@@ -120,12 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- FORM PAGE ---
+  // ---- FORM PAGE ----
   if (document.getElementById("recipe-form")) {
     import("./form.js");
   }
 
-  // --- DETAIL PAGE ---
+  // ---- DETAIL PAGE ----
   if (document.querySelector(".recipe-detail")) {
     import("./detail.js");
   }
