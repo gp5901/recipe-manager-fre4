@@ -1,40 +1,53 @@
 /**
  * Vite Configuration
- * 
+ *
  * @see https://vitejs.dev/config/
  */
 
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 export default defineConfig({
   // Base public path
-  base: '/',
-  
+  base: "/",
+
+  // Plugins
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: "pages",
+          dest: "",
+        },
+      ],
+    }),
+  ],
+
   // Server configuration
   server: {
     port: 3000,
     open: true,
     cors: true,
   },
-  
+
   // Build configuration
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
+    outDir: "dist",
+    assetsDir: "assets",
     sourcemap: true,
-    minify: 'terser',
-    target: 'es2020',
-    
+    minify: "terser",
+    target: "es2020",
+
     // Rollup options
     rollupOptions: {
       output: {
         manualChunks: {
           // Code splitting strategy
-          'vendor': ['vitest'],
+          vendor: ["vitest"],
         },
       },
     },
-    
+
     // Terser options for minification
     terserOptions: {
       compress: {
@@ -43,35 +56,30 @@ export default defineConfig({
       },
     },
   },
-  
+
   // Test configuration (Vitest)
   test: {
     globals: true,
-    environment: 'jsdom',
-    setupFiles: './tests/setup.js',
+    environment: "jsdom",
+    setupFiles: "./tests/setup.js",
     coverage: {
-      provider: 'v8',
-      reporter: ['text', 'json', 'html', 'lcov'],
-      exclude: [
-        'node_modules/',
-        'tests/',
-        '**/*.config.js',
-        '**/constants.js',
-      ],
+      provider: "v8",
+      reporter: ["text", "json", "html", "lcov"],
+      exclude: ["node_modules/", "tests/", "**/*.config.js", "**/constants.js"],
       lines: 80,
       functions: 80,
       branches: 80,
       statements: 80,
     },
-    include: ['tests/**/*.test.js'],
-    exclude: ['node_modules', 'dist'],
+    include: ["tests/**/*.test.js"],
+    exclude: ["node_modules", "dist"],
   },
-  
+
   // Optimizations
   optimizeDeps: {
     include: [],
   },
-  
+
   // CSS configuration
   css: {
     devSourcemap: true,
