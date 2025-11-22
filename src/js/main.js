@@ -6,6 +6,7 @@ import { FilterManager } from "./modules/filters.js";
 import { sampleRecipes } from "../data/sample-recipes.js";
 import { STORAGE_KEY } from "../utils/constants.js";
 
+// Import CSS so Vite bundles and injects them
 import "../css/main.css";
 import "../css/components/card.css";
 import "../css/components/filters.css";
@@ -13,7 +14,6 @@ import "../css/components/form.css";
 import "../css/components/modal.css";
 import "../css/utils/reset.css";
 import "../css/utils/variables.css";
-// Import every style you need across your app!
 
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Initialize storage and seed sample data if none exists
@@ -142,7 +142,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 10. Optional debug logs for storage state and recipe count
+  // 10. Load page-specific JS modules conditionally to enable validations etc.
+  if (document.getElementById("recipe-form")) {
+    import("./form.js");
+  }
+  if (document.querySelector(".recipe-detail")) {
+    import("./detail.js");
+  }
+
+  // Optional debug logs – uncomment as needed
   // console.log(
   //   "Seeded recipes stored under " + STORAGE_KEY + ":",
   //   localStorage.getItem(STORAGE_KEY)
