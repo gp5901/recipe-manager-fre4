@@ -26,7 +26,7 @@ export const sampleRecipes = [
     cookTime: 30,
     difficulty: DIFFICULTY_LEVELS.EASY,
     category: "veg", // Pure vegetarian
-    imageURL: "/src/assets/images/easy/tomato-soup.jpg",
+    imageURL: "/assets/images/easy/tomato-soup.jpg",
   },
 
   {
@@ -45,13 +45,12 @@ export const sampleRecipes = [
     cookTime: 5,
     difficulty: DIFFICULTY_LEVELS.EASY,
     category: "vegetarian", // Contains eggs
-    imageURL: "/src/assets/images/easy/scrambled-eggs.jpg",
+    imageURL: "/assets/images/easy/scrambled-eggs.jpg",
   },
   {
     id: "easy-3",
-    title: "Grilled Cheese Sandwich",
-    description:
-      "Golden and crispy grilled cheese sandwich with melted cheese.",
+    title: "Cheese Toastie",
+    description: "Golden and crispy Cheese Toastie with melted cheese.",
     ingredients: ["2 slices bread", "2 slices cheddar cheese", "Butter"],
     steps: [
       "Butter one side of each bread slice.",
@@ -62,7 +61,7 @@ export const sampleRecipes = [
     cookTime: 5,
     difficulty: DIFFICULTY_LEVELS.EASY,
     category: "vegetarian", // Contains dairy
-    imageURL: "/src/assets/images/easy/grilled-cheese.jpg",
+    imageURL: "/assets/images/easy/grilled-cheese.jpg",
   },
   {
     id: "easy-4",
@@ -86,11 +85,11 @@ export const sampleRecipes = [
     cookTime: 0,
     difficulty: DIFFICULTY_LEVELS.EASY,
     category: "fruit", // Fruit-based dish
-    imageURL: "/src/assets/images/easy/fruit-salad.jpg",
+    imageURL: "/assets/images/easy/fruit-salad.jpg",
   },
   {
     id: "easy-5",
-    title: "Peanut Butter Banana Toast",
+    title: "Elvis Toast",
     description: "Creamy peanut butter with sliced banana on toasted bread.",
     ingredients: [
       "1 slice whole wheat bread",
@@ -108,7 +107,7 @@ export const sampleRecipes = [
     cookTime: 2,
     difficulty: DIFFICULTY_LEVELS.EASY,
     category: "vegetarian", // Vegan-friendly but categorized as vegetarian
-    imageURL: "/src/assets/images/easy/peanut-butter-banana-toast.jpg",
+    imageURL: "/assets/images/easy/peanut-butter-banana-toast.jpg",
   },
 
   // Medium Recipes (5)
@@ -137,7 +136,7 @@ export const sampleRecipes = [
     cookTime: 25,
     difficulty: DIFFICULTY_LEVELS.MEDIUM,
     category: "nonveg", // Contains chicken
-    imageURL: "/src/assets/images/medium/chicken-alfredo.jpg",
+    imageURL: "/assets/images/medium/chicken-alfredo.jpg",
   },
   {
     id: "medium-2",
@@ -163,7 +162,7 @@ export const sampleRecipes = [
     cookTime: 20,
     difficulty: DIFFICULTY_LEVELS.MEDIUM,
     category: "nonveg", // Contains beef
-    imageURL: "/src/assets/images/medium/beef-stir-fry.jpg",
+    imageURL: "/assets/images/medium/beef-stir-fry.jpg",
   },
   {
     id: "medium-3",
@@ -189,7 +188,7 @@ export const sampleRecipes = [
     cookTime: 1,
     difficulty: DIFFICULTY_LEVELS.MEDIUM,
     category: "vegetarian", // Contains cheese/dairy
-    imageURL: "/src/assets/images/medium/vegetable-lasagna.jpg",
+    imageURL: "/assets/images/medium/vegetable-lasagna.jpg",
   },
   {
     id: "medium-4",
@@ -214,7 +213,7 @@ export const sampleRecipes = [
     cookTime: 15,
     difficulty: DIFFICULTY_LEVELS.MEDIUM,
     category: "nonveg", // Contains shrimp/seafood
-    imageURL: "/src/assets/images/medium/shrimp-scampi.jpg",
+    imageURL: "/assets/images/medium/shrimp-scampi.jpg",
   },
   {
     id: "medium-5",
@@ -239,7 +238,7 @@ export const sampleRecipes = [
     cookTime: 40,
     difficulty: DIFFICULTY_LEVELS.MEDIUM,
     category: "vegetarian", // Contains cheese/dairy
-    imageURL: "/src/assets/images/medium/stuffed-bell-peppers.jpg",
+    imageURL: "/assets/images/medium/stuffed-bell-peppers.jpg",
   },
 
   // Hard Recipes (5)
@@ -269,7 +268,7 @@ export const sampleRecipes = [
     cookTime: 45,
     difficulty: DIFFICULTY_LEVELS.HARD,
     category: "nonveg", // Contains beef
-    imageURL: "/src/assets/images/hard/beef-wellington.jpg",
+    imageURL: "/assets/images/hard/beef-wellington.jpg",
   },
   {
     id: "hard-2",
@@ -295,7 +294,7 @@ export const sampleRecipes = [
     cookTime: 150,
     difficulty: DIFFICULTY_LEVELS.HARD,
     category: "nonveg", // Contains chicken
-    imageURL: "/src/assets/images/hard/coq-au-vin.jpg",
+    imageURL: "/assets/images/hard/coq-au-vin.jpg",
   },
   {
     id: "hard-3",
@@ -321,7 +320,7 @@ export const sampleRecipes = [
     cookTime: 40,
     difficulty: DIFFICULTY_LEVELS.HARD,
     category: "vegetarian", // Contains eggs and cheese
-    imageURL: "/src/assets/images/hard/souffle.jpg",
+    imageURL: "/assets/images/hard/souffle.jpg",
   },
   {
     id: "hard-4",
@@ -345,7 +344,7 @@ export const sampleRecipes = [
     cookTime: 90,
     difficulty: DIFFICULTY_LEVELS.HARD,
     category: "nonveg", // Contains duck
-    imageURL: "/src/assets/images/hard/duck-orange.jpg",
+    imageURL: "/assets/images/hard/duck-orange.jpg",
   },
   {
     id: "hard-5",
@@ -368,6 +367,6 @@ export const sampleRecipes = [
     cookTime: 5,
     difficulty: DIFFICULTY_LEVELS.HARD,
     category: "dessert", // Sweet dessert
-    imageURL: "/src/assets/images/hard/baked-alaska.jpg",
+    imageURL: "/assets/images/hard/baked-alaska.jpg",
   },
 ];
