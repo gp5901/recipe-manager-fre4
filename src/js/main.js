@@ -85,46 +85,50 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Prep Time Sliders (if present)
+  // Prep Time sliders and display updates
   const prepTimeMinSlider = document.getElementById("prep-time-min");
   const prepTimeMaxSlider = document.getElementById("prep-time-max");
-  if (prepTimeMinSlider) {
+  const prepTimeMinValue = document.getElementById("prep-time-min-value");
+  const prepTimeMaxValue = document.getElementById("prep-time-max-value");
+
+  if (prepTimeMinSlider && prepTimeMinValue) {
     prepTimeMinSlider.addEventListener("input", (event) => {
-      filterManager.setPrepTime(
-        Number(event.target.value),
-        filterManager.prepTimeMax
-      );
-      applyFilters();
-    });
-  }
-  if (prepTimeMaxSlider) {
-    prepTimeMaxSlider.addEventListener("input", (event) => {
-      filterManager.setPrepTime(
-        filterManager.prepTimeMin,
-        Number(event.target.value)
-      );
+      const value = Number(event.target.value);
+      prepTimeMinValue.textContent = value;
+      filterManager.setPrepTime(value, filterManager.prepTimeMax);
       applyFilters();
     });
   }
 
-  // Cook Time Sliders (if present)
-  const cookTimeMinSlider = document.getElementById("cook-time-min");
-  const cookTimeMaxSlider = document.getElementById("cook-time-max");
-  if (cookTimeMinSlider) {
-    cookTimeMinSlider.addEventListener("input", (event) => {
-      filterManager.setCookTime(
-        Number(event.target.value),
-        filterManager.cookTimeMax
-      );
+  if (prepTimeMaxSlider && prepTimeMaxValue) {
+    prepTimeMaxSlider.addEventListener("input", (event) => {
+      const value = Number(event.target.value);
+      prepTimeMaxValue.textContent = value;
+      filterManager.setPrepTime(filterManager.prepTimeMin, value);
       applyFilters();
     });
   }
-  if (cookTimeMaxSlider) {
+
+  // Cook Time sliders and display updates
+  const cookTimeMinSlider = document.getElementById("cook-time-min");
+  const cookTimeMaxSlider = document.getElementById("cook-time-max");
+  const cookTimeMinValue = document.getElementById("cook-time-min-value");
+  const cookTimeMaxValue = document.getElementById("cook-time-max-value");
+
+  if (cookTimeMinSlider && cookTimeMinValue) {
+    cookTimeMinSlider.addEventListener("input", (event) => {
+      const value = Number(event.target.value);
+      cookTimeMinValue.textContent = value;
+      filterManager.setCookTime(value, filterManager.cookTimeMax);
+      applyFilters();
+    });
+  }
+
+  if (cookTimeMaxSlider && cookTimeMaxValue) {
     cookTimeMaxSlider.addEventListener("input", (event) => {
-      filterManager.setCookTime(
-        filterManager.cookTimeMin,
-        Number(event.target.value)
-      );
+      const value = Number(event.target.value);
+      cookTimeMaxValue.textContent = value;
+      filterManager.setCookTime(filterManager.cookTimeMin, value);
       applyFilters();
     });
   }
