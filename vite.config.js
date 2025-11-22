@@ -12,16 +12,16 @@ export default defineConfig({
   base: "/",
 
   // Plugins
-  plugins: [
-    viteStaticCopy({
-      targets: [
-        {
-          src: "pages", // copies `pages/` to `dist/pages/`
-          dest: "",
-        },
-      ],
-    }),
-  ],
+plugins: [
+  viteStaticCopy({
+    targets: [
+      {
+        src: "pages", // copies `pages/` to `dist/pages/`
+        dest: "",
+      },
+    ],
+  }),
+],
 
   // Server configuration
   server: {
